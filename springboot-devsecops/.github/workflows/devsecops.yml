@@ -43,8 +43,9 @@ jobs:
       - name: Push Docker Image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/springboot-devsecops:v1
 
+
       - name: Run Trivy Scan
         uses: aquasecurity/trivy-action@0.28.0
-        with:
-          image-ref: springboot-devsecops:v1
+       with:
+          image-ref: ${{ secrets.DOCKER_USERNAME }}/springboot-devsecops:v1
           format: table
